@@ -1583,16 +1583,7 @@ public class Menu extends JFrame{
 					{
 						JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
 					}
-					if(withdraw > 500)
-					{
-						JOptionPane.showMessageDialog(f, "500 is the maximum you can withdraw at a time." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
-						withdraw = 0;
-					}
-					if(withdraw > acc.getBalance())
-					{
-						JOptionPane.showMessageDialog(f, "Insufficient funds." ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
-						withdraw = 0;					
-					}
+				 	withdraw = validateWithdrawalAmount(withdraw, acc);
 				
 				String euro = "\u20ac";
 				 acc.setBalance(acc.getBalance()-withdraw);
@@ -1641,5 +1632,21 @@ public class Menu extends JFrame{
 	  }  
 	  return true;  
 	}
+
+	private double validateWithdrawalAmount(double amount, CustomerAccount account) {
+
+    if(amount > 500) {
+        JOptionPane.showMessageDialog(f, "500 is the maximum you can withdraw at a time." ,"Oops!", JOptionPane.INFORMATION_MESSAGE);
+        return 0;
+    }
+
+    if(amount > account.getBalance()) {
+        JOptionPane.showMessageDialog(f, "Insufficient funds." ,"Oops!", JOptionPane.INFORMATION_MESSAGE);
+        return 0;
+    }
+
+    return amount;
+}
+
 }
 
