@@ -1506,21 +1506,9 @@ public class Menu extends JFrame{
 				 	withdraw = validateWithdrawalAmount(withdraw, acc);
 				
 				String euro = "\u20ac";
-				 acc.setBalance(acc.getBalance()-withdraw);
-				   //recording transaction:
-			//		String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-				 Date date = new Date();
-				 String date2 = date.toString();
+
+				 acc.withdraw(withdraw);
 				 
-				 String type = "Withdraw";
-					double amount = withdraw;
-					
-		
-					AccountTransaction transaction = new AccountTransaction(date2, type, amount);
-					acc.getTransactionList().add(transaction);
-				 
-				 
-					
 				 JOptionPane.showMessageDialog(f, withdraw + euro + " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
 				 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
 				}

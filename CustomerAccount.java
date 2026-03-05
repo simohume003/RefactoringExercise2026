@@ -73,6 +73,19 @@ public class CustomerAccount  {
     AccountTransaction transaction = new AccountTransaction(date2, type, transactionAmount);
     this.transactionList.add(transaction);
 }
+
+public void withdraw(double amount)
+{
+    this.balance = this.balance - amount;
+
+    Date date = new Date();
+    String date2 = date.toString();
+    String type = "Withdraw";
+    double transactionAmount = amount;
+
+    AccountTransaction transaction = new AccountTransaction(date2, type, transactionAmount);
+    this.transactionList.add(transaction);
+}
 	
 	
 	
