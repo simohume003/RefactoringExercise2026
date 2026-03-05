@@ -1,4 +1,7 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date; 
 
 public class CustomerAccount  {
    
@@ -57,6 +60,19 @@ public class CustomerAccount  {
 	{
 		this.transactionList = transactionList;
 	}
+
+	public void lodge(double amount)
+{
+    this.balance = this.balance + amount;
+
+    Date date = new Date();
+    String date2 = date.toString();
+    String type = "Lodgement";
+    double transactionAmount = amount;
+
+    AccountTransaction transaction = new AccountTransaction(date2, type, transactionAmount);
+    this.transactionList.add(transaction);
+}
 	
 	
 	

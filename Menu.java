@@ -1451,32 +1451,22 @@ public class Menu extends JFrame{
 					}
 				String balanceTest = JOptionPane.showInputDialog(f, "Enter amount you wish to lodge:");//the isNumeric method tests to see if the string entered was numeric. 
 				if(isNumeric(balanceTest))
-				{
+			{
 					
-					balance = Double.parseDouble(balanceTest);
-					loop = false;
+			balance = Double.parseDouble(balanceTest);
+			loop = false;
 					
 					
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
-				}
+			}
+			else
+			{
+			 JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
+			}
 				
 			
 			String euro = "\u20ac";
-			 acc.setBalance(acc.getBalance() + balance);
-			// String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-			 Date date = new Date();
-			 String date2 = date.toString();
-			 String type = "Lodgement";
-				double amount = balance;
-				
-				
-				
-				
-				AccountTransaction transaction = new AccountTransaction(date2, type, amount);
-				acc.getTransactionList().add(transaction);
+			 
+			acc.lodge(balance);
 				
 			 JOptionPane.showMessageDialog(f, balance + euro + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
 			 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
