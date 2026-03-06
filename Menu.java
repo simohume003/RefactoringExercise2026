@@ -1508,7 +1508,7 @@ public class Menu extends JFrame{
 				String euro = "\u20ac";
 
 				 acc.withdraw(withdraw);
-				 
+
 				 JOptionPane.showMessageDialog(f, withdraw + euro + " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
 				 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -1602,6 +1602,23 @@ private boolean validatePin(CustomerCurrentAccount account, Customer e) {
     }
 
     return on;
+}
+private double getNumericInput(String message)
+{
+    String input = JOptionPane.showInputDialog(f, message);
+
+    if(isNumeric(input))
+    {
+        return Double.parseDouble(input);
+    }
+    else
+    {
+        JOptionPane.showMessageDialog(f,
+            "You must enter a numerical value!","Oops!",
+            JOptionPane.INFORMATION_MESSAGE);
+
+        return 0;
+    }
 }
 
 }
