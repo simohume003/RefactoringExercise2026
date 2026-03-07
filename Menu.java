@@ -262,16 +262,14 @@ public class Menu extends JFrame{
 						Customer customer = null;
 					    while(loop)
 					    {
-					    Object customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
-					    
-					    for (Customer aCustomer: customerList){
-					    	
-					    	if(aCustomer.getCustomerID().equals(customerID))//search customer list for matching customer ID
-					    	{
-					    		found = true;
-					    		customer = aCustomer;
-					    	}					    	
-					    }
+					   String customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
+
+						customer = findCustomerByID(customerID);
+
+							if(customer != null)
+								{
+    							found = true;
+								}
 					    
 					    if(found == false)
 					    {
@@ -421,17 +419,15 @@ public class Menu extends JFrame{
 				{
 			    while(loop)
 			    {
-			    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Charges to:");
-			    
-			    for (Customer aCustomer: customerList){
-			    	
-			    	if(aCustomer.getCustomerID().equals(customerID))
-			    	{
-			    		found = true;
-			    		customer = aCustomer; 
-			    		loop = false;
-			    	}					    	
-			    }
+			   String customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Charges to:");
+
+				customer = findCustomerByID(customerID);
+
+					if(customer != null)
+					{
+    				found = true;
+    				loop = false;
+					}
 			    
 			    if(found == false)
 			    {
@@ -566,17 +562,15 @@ public class Menu extends JFrame{
 				{
 			    while(loop)
 			    {
-			    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Interest to:");
+			    String customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Apply Interest to:");
 			    
-			    for (Customer aCustomer: customerList){
-			    	
-			    	if(aCustomer.getCustomerID().equals(customerID))
-			    	{
-			    		found = true;
-			    		customer = aCustomer; 
-			    		loop = false;
-			    	}					    	
-			    }
+			    customer = findCustomerByID(customerID);
+
+				if(customer != null)
+					{
+  					  found = true;
+   					 loop = false;
+						}
 			    
 			    if(found == false)
 			    {
@@ -717,16 +711,14 @@ public class Menu extends JFrame{
 				
 			    while(loop)
 			    {
-			    Object customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
-			    
-			    for (Customer aCustomer: customerList){
-			    	
-			    	if(aCustomer.getCustomerID().equals(customerID))
-			    	{
-			    		found = true;
-			    		customer = aCustomer;
-			    	}					    	
-			    }
+			    String customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
+
+					customer = findCustomerByID(customerID);
+
+				if(customer != null)
+					{
+    				found = true;
+					}
 			    
 			    if(found == false)
 			    {
@@ -1089,16 +1081,14 @@ public class Menu extends JFrame{
 			
 			    while(loop)
 			    {
-			    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Add an Account to:");
-			    
-			    for (Customer aCustomer: customerList){
-			    	
-			    	if(aCustomer.getCustomerID().equals(customerID))
-			    	{
-			    		found = true;
-			    		customer = aCustomer; 	
-			    	}					    	
-			    }
+			    String customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Add an Account to:");
+
+				customer = findCustomerByID(customerID);
+
+				if(customer != null)
+					{
+   					 found = true;
+					}
 			    
 			    if(found == false)
 			    {
@@ -1179,17 +1169,15 @@ public class Menu extends JFrame{
 				else
 				{
 					 {
-						    Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Delete:");
-						    
-						    for (Customer aCustomer: customerList){
-						    	
-						    	if(aCustomer.getCustomerID().equals(customerID))
-						    	{
-						    		found = true;
-						    		customer = aCustomer; 
-						    		loop = false;
-						    	}					    	
-						    }
+						    String customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Delete:");
+
+						customer = findCustomerByID(customerID);
+
+						if(customer != null)
+							{
+   							 found = true;
+    						loop = false;
+								}
 						    
 						    if(found == false)
 						    {
@@ -1477,7 +1465,6 @@ public class Menu extends JFrame{
 						if(on == true)
 						{
 					withdraw = getNumericInput("Enter amount you wish to withdraw (max 500):");
-					
 				 	withdraw = validateWithdrawalAmount(withdraw, acc);
 				
 				String euro = "\u20ac";
@@ -1594,6 +1581,18 @@ private double getNumericInput(String message)
 
         return 0;
     }
+}
+private Customer findCustomerByID(String customerID)
+{
+    for(Customer aCustomer : customerList)
+    {
+        if(aCustomer.getCustomerID().equals(customerID))
+        {
+            return aCustomer;
+        }
+    }
+
+    return null;
 }
 
 }
