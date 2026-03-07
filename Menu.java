@@ -1449,20 +1449,7 @@ public class Menu extends JFrame{
        			 return;
     			}
 					}
-				String balanceTest = JOptionPane.showInputDialog(f, "Enter amount you wish to lodge:");//the isNumeric method tests to see if the string entered was numeric. 
-				if(isNumeric(balanceTest))
-			{
-					
-			balance = Double.parseDouble(balanceTest);
-			loop = false;
-					
-					
-			}
-			else
-			{
-			 JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
-			}
-				
+		balance = getNumericInput("Enter amount you wish to lodge:");		
 			
 			String euro = "\u20ac";
 			 
@@ -1489,20 +1476,8 @@ public class Menu extends JFrame{
 			
 						if(on == true)
 						{
-					String balanceTest = JOptionPane.showInputDialog(f, "Enter amount you wish to withdraw (max 500):");//the isNumeric method tests to see if the string entered was numeric. 
-					if(isNumeric(balanceTest))
-					{
-						
-						withdraw = Double.parseDouble(balanceTest);
-						loop = false;
-						
-						
-						
-					}
-					else
-					{
-						JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
-					}
+					withdraw = getNumericInput("Enter amount you wish to withdraw (max 500):");
+					
 				 	withdraw = validateWithdrawalAmount(withdraw, acc);
 				
 				String euro = "\u20ac";
