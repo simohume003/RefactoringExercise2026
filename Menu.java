@@ -1439,12 +1439,8 @@ public class Menu extends JFrame{
 					}
 		balance = getNumericInput("Enter amount you wish to lodge:");		
 			
-			String euro = "\u20ac";
-			 
 			acc.lodge(balance);
-				
-			 JOptionPane.showMessageDialog(f, balance + euro + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
-			 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+			showBalanceMessage(balance, acc, "lodged");
 			}	
 	     });
 		
@@ -1467,12 +1463,8 @@ public class Menu extends JFrame{
 					withdraw = getNumericInput("Enter amount you wish to withdraw (max 500):");
 				 	withdraw = validateWithdrawalAmount(withdraw, acc);
 				
-				String euro = "\u20ac";
-
-				 acc.withdraw(withdraw);
-
-				 JOptionPane.showMessageDialog(f, withdraw + euro + " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
-				 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
+				acc.withdraw(withdraw);
+				showBalanceMessage(withdraw, acc, "withdrawn");
 				}
 				 
 					
@@ -1593,6 +1585,24 @@ private Customer findCustomerByID(String customerID)
     }
 
     return null;
+}
+private void showBalanceMessage(double amount, CustomerAccount account, String action)
+{
+    String euro = "\u20ac";
+
+    JOptionPane.showMessageDialog(
+        f,
+        amount + euro + " " + action,
+        "Transaction",
+        JOptionPane.INFORMATION_MESSAGE
+    );
+
+    JOptionPane.showMessageDialog(
+        f,
+        "New balance = " + account.getBalance() + euro,
+        "Transaction",
+        JOptionPane.INFORMATION_MESSAGE
+    );
 }
 
 }
